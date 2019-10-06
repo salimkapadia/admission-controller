@@ -1,0 +1,43 @@
+# Default values for portieris.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 3
+namespace: ibm-system
+
+image:
+  host: docker.io/ibmcom
+  image: portieris
+  tag: 0.5.2
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 443
+  targetPort: 8000
+
+# If not running on IBM Cloud Container Service set to false
+IBMContainerService: true
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# Not recommended for user to configure this. Hyperkube image to use when creating custom resources
+hyperkube:
+  repository: quay.io/coreos/hyperkube
+  tag: v1.7.6_coreos.0

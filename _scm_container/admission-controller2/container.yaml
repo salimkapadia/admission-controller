@@ -1,0 +1,18 @@
+# Sets the name of the docker image to be build from the Dockerfile or pulled from the internet - If no Dockerfile is present the pipeline will attempt to pull from the internet
+name: admission-controller2
+
+# Desired tags of image - If no Dockerfile is present the pipeline will attempt to pull each tag from the internet
+tags:
+  - v2.0.0
+  - latest
+
+######   Additional Parameters   ######
+# Define how Docker Image pipeline should process this image. Default value - true. Supported values
+# true - build and uploaded to Artifactory
+# false - skip the build and upload to Artifactory. If image was previously uploaded it will not be changed.
+# delete - COMING SOON - delete the image versions defined in this container.yaml
+build: true
+
+# Required for ASx projects only. Should map with the associated Artifactory Repository of your Docker Registry given by the EAT team.
+# For a Docker Registry that is accessed as taaa-docker.artifactrepo.jnj.com, this should be taaa-docker
+artifactory_repository: itx-acc
